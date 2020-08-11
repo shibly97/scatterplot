@@ -36,12 +36,10 @@ let genarateScales = () =>{
     xAxisScale = d3.scaleTime()
                    .domain([d3.min(dateData),d3.max(dateData)])
                    .range([padding,width-padding])
-
+    // use date objects to get dates. its easy.    
     let timeData = data.map((object)=>{
-        return new Date(0,0,0,0,0,object['Seconds'],0)    }
+        return new Date(0,0,0,0,0,object['Seconds'],0)   }
     )
-
-    console.log(timeData)
 
     yAxisScale = d3.scaleTime()
                    .domain([d3.min(data,(object)=>{
@@ -72,6 +70,7 @@ let drawAxis = () =>{
        .call(xAxis)
        .attr('id',"x-axis")
        .attr('transform','translate(0,'+(height-padding)+')')
+
 
     svg.append('g')
        .call(yAxis)
